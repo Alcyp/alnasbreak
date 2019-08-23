@@ -9,8 +9,21 @@ public class LightController : MonoBehaviour
     public float lightDistance;
     SpriteRenderer ren;
     Sprite sprite;
-    public float angle;
     public float rotation;
+    public float angle;
+    public bool continuousRotation = false;
+    [Range(0, 100f)]
+    public float swingSpeed = 0f;
+    [Range(0f, 360f)]
+    public float swingAngle = 0f;
+    [Range(0f, 10f)]
+    public float widenSpeed = 0f;
+    [Range(0f, 45f)]
+    public float widenAngle = 0f;
+    public float startingAngle;
+    public float startingRotation;
+    float swingDirection = 1f;
+    float widenDirection = 1f;
 
     void OnValidate()
     {
@@ -23,6 +36,8 @@ public class LightController : MonoBehaviour
     void Awake()
     {
         ren = GetComponent<SpriteRenderer>();
+        startingAngle = angle;
+        startingRotation = rotation;
     }
 
     void Update()
@@ -30,6 +45,7 @@ public class LightController : MonoBehaviour
         UpdateCone();
         UpdateShape();
         Rotate();
+        MoveLight();
     }
 
     void UpdateShape()
@@ -50,5 +66,17 @@ public class LightController : MonoBehaviour
         Vector3 temp = transform.eulerAngles;
         temp.z = rotation;
         transform.eulerAngles = temp;
+    }
+
+    void MoveLight()
+    {
+        rotation += swingSpeed * Time.deltaTime * swingDirection;
+        if (continuousRotation) { return; }
+        if (rotation > startingRotation + swingAngle) { swingDirection *= -1f; }
+        if (rotation < startingRotation - swingAngle) { swingDirection *= -1f; }
+
+        angle += widenSpeed * Time.deltaTime * widenDirection;
+        if (angle > startingAngle + widenAngle) { widenDirection *= -1f; }
+        if (angle < startingAngle - widenAngle) { widenDirection *= -1f; }
     }
 }
