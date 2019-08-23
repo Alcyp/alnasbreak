@@ -537,12 +537,12 @@ MonoBehaviour:
   rotation: -30
   angle: 30
   continuousRotation: 0
-  swingSpeed: 100
-  swingAngle: 10
-  widenSpeed: 20
-  widenAngle: 5
-  startingAngle: 0
-  startingRotation: 0
+  swingSpeed: 1.2
+  swingAngle: 8
+  widenSpeed: 4.81
+  widenAngle: 3.7
+  startingAngle: 30
+  startingRotation: -30
 --- !u!212 &1347362280
 SpriteRenderer:
   m_ObjectHideFlags: 0
