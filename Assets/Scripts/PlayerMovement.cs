@@ -22,4 +22,6 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
+
+    
 }

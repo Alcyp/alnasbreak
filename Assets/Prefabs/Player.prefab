@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inLight: 0
+  lightForce: 20
 --- !u!1 &7239873035985270435
 GameObject:
   m_ObjectHideFlags: 0

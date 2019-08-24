@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class senseLogic : MonoBehaviour
+public class SenseLogic : MonoBehaviour
 {
     public bool inLight;
     SpriteRenderer glow;

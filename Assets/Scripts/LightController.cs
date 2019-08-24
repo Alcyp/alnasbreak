@@ -7,6 +7,7 @@ public class LightController : MonoBehaviour
     Texture2D texture;
     float width;
     public bool turnedOn;
+    public bool changeDirection;
     public float lightDistance;
     SpriteRenderer ren;
     Sprite sprite;
@@ -68,7 +69,9 @@ public class LightController : MonoBehaviour
             if (rotation > startingRotation + swingAngle) { swingDirection = -1f; }
             if (rotation < startingRotation - swingAngle) { swingDirection = 1f; }
         }
-        rotation += swingSpeed * Time.deltaTime * swingDirection;
+        float swingD = swingDirection;
+        if (changeDirection) { swingD *= -1f; }
+        rotation += swingSpeed * Time.deltaTime * swingD;
         ApplyRotation();
     }
 
