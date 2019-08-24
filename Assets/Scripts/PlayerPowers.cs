@@ -27,7 +27,7 @@ public class PlayerPowers : MonoBehaviour
     void Update()
     {
         if (rb.velocity.sqrMagnitude < 0.1f && playerBall.activeSelf) { TurnIntoHuman(); }
-
+        if (playerBall.activeSelf) { return; }
         inLight = sense.inLight;
         RayLogic();
         
@@ -35,10 +35,13 @@ public class PlayerPowers : MonoBehaviour
 
     void RayLogic()
     {
+
         if (!inLight) { ray.turnedOn = false; return; }
 
         if (Input.GetAxis("Submit") == 0f) { ray.turnedOn = false; return; }
         
+
+
         ray.turnedOn = true;
         ray.rotation = AngleTowardsMouse();
 
@@ -70,6 +73,11 @@ public class PlayerPowers : MonoBehaviour
         lightRay.SetActive(true);
         boxCollider.enabled = true;
         rb.gravityScale = 3f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
