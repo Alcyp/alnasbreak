@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2870350000929908123}
   - component: {fileID: 2870350000929908122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2870350001640006369}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 2870350002092791416}
   - component: {fileID: 2870350002092791417}
   - component: {fileID: 2870350002092791418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
