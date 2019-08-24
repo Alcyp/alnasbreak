@@ -17,10 +17,8 @@ public class LightController : MonoBehaviour
     public float swingSpeed = 0f;
     [Range(0f, 360f)]
     public float swingAngle = 0f;
-    [Range(0f, 10f)]
+    [Range(0f, 30f)]
     public float widenSpeed = 0f;
-    [Range(0f, 45f)]
-    public float widenAngle = 0f;
     float startingAngle;
     float startingRotation;
     float startingLightDistance;
@@ -31,7 +29,7 @@ public class LightController : MonoBehaviour
     {
         ren = GetComponent<SpriteRenderer>();
         UpdateCone();
-        Rotate();
+        ApplyRotation();
     }
 
     void Awake()
@@ -46,8 +44,10 @@ public class LightController : MonoBehaviour
 
     void Update()
     {
-        if (turnedOn) { turnOn(); }
-        if (!turnedOn) { return; }
+        if (turnedOn) { lightDistance = startingLightDistance; }
+        
+        //lightDistance = turnedOn ? startingLightDistance : 0f;
+
         UpdateCone();
         Rotate();
         MoveLight();
@@ -63,6 +63,17 @@ public class LightController : MonoBehaviour
 
     void Rotate()
     {
+        if (!continuousRotation)
+        {
+            if (rotation > startingRotation + swingAngle) { swingDirection = -1f; }
+            if (rotation < startingRotation - swingAngle) { swingDirection = 1f; }
+        }
+        rotation += swingSpeed * Time.deltaTime * swingDirection;
+        ApplyRotation();
+    }
+
+    void ApplyRotation()
+    {
         if (rotation == transform.eulerAngles.z) { return; }
         Vector3 temp = transform.eulerAngles;
         temp.z = rotation;
@@ -71,19 +82,23 @@ public class LightController : MonoBehaviour
 
     void MoveLight()
     {
-        rotation += swingSpeed * Time.deltaTime * swingDirection;
-        if (continuousRotation) { return; }
-        if (rotation > startingRotation + swingAngle) { swingDirection = -1f; }
-        if (rotation < startingRotation - swingAngle) { swingDirection = 1f; }
-
+        if (!turnedOn)
+        {
+            widenDirection = -1f;
+            if (angle <= 0f) { lightDistance = 0f; return; }
+        }
         angle += widenSpeed * Time.deltaTime * widenDirection;
-        if (angle > startingAngle + widenAngle) { widenDirection = -1f; }
-        if (angle < startingAngle - widenAngle) { widenDirection = 1f; }
+        if (angle > startingAngle) { widenDirection = -1f; }
+        if (angle < startingAngle) { widenDirection = 1f; }
     }
 
     public void turnOn()
     {
         turnedOn = true;
-        lightDistance = startingLightDistance;
+    }
+
+    public void turnOff()
+    {
+        turnedOn = false;
     }
 }
