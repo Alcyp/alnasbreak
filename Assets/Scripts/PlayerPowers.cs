@@ -13,7 +13,9 @@ public class PlayerPowers : MonoBehaviour
     public SpriteRenderer playerLight;
     public SpriteRenderer playerDark;
     public SpriteRenderer playerGlow;
-    public SpriteRenderer playerBall;
+    public GameObject playerBall;
+    public GameObject lightRay;
+    public BoxCollider2D boxCollider;
 
     private void Awake()
     {
@@ -24,44 +26,50 @@ public class PlayerPowers : MonoBehaviour
 
     void Update()
     {
+        if (rb.velocity.sqrMagnitude < 0.1f && playerBall.activeSelf) { TurnIntoHuman(); }
+
         inLight = sense.inLight;
-        if (!inLight) {
-            ray.turnedOn = false;
-            return;
-        }
-        if (Input.GetAxis("Submit") == 1f)
-        {
-            ray.turnedOn = true;
-            ray.rotation = AngleTowardsMouse();
-            if (Input.GetMouseButtonDown(0))
-            {
-                //Debug.Log("Ding!");
-                //Change shape into light
-
-                rb.AddForce(VectorTowardsMouse() * lightForce);
-            }
-        }
-        else
-        {
-            ray.turnedOn = false;
-        }
-
+        RayLogic();
+        
     }
 
-    void ToggleBall()
+    void RayLogic()
     {
-        if (playerBall.enabled)
+        if (!inLight) { ray.turnedOn = false; return; }
+
+        if (Input.GetAxis("Submit") == 0f) { ray.turnedOn = false; return; }
+        
+        ray.turnedOn = true;
+        ray.rotation = AngleTowardsMouse();
+
+        if (Input.GetMouseButtonDown(0))
         {
-            playerBall.enabled = false;
-            playerLight.enabled = true;
-            playerDark.enabled = true;
-            playerGlow.enabled = true;
-            return;
+            TurnIntoBall(); //Change shape into light
+            
+            rb.AddForce(VectorTowardsMouse() * lightForce);
         }
-        playerBall.enabled = true;
+    }
+
+    void TurnIntoBall()
+    {
+        playerBall.SetActive(true);
         playerLight.enabled = false;
         playerDark.enabled = false;
         playerGlow.enabled = false;
+        lightRay.SetActive(false);
+        boxCollider.enabled = false;
+        rb.gravityScale = 0.01f;
+    }
+
+    void TurnIntoHuman()
+    {
+        playerBall.SetActive(false);
+        playerLight.enabled = true;
+        playerDark.enabled = true;
+        playerGlow.enabled = true;
+        lightRay.SetActive(true);
+        boxCollider.enabled = true;
+        rb.gravityScale = 3f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

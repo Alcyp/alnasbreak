@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
+    public GameObject playerBall;
 
     public float moveSpeed = 10f;
     float velocity = 0f;
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (playerBall.activeSelf) { velocity = 0f; return; }
         velocity = Input.GetAxisRaw("Horizontal") * moveSpeed;
         if (Input.GetButtonDown("Jump")) { jump = true; }
 

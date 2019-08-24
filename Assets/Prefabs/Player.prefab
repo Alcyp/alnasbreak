@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5859401459224770919}
   - component: {fileID: 2402686983205629434}
+  - component: {fileID: 4144460777152448641}
   m_Layer: 0
   m_Name: LightBall
   m_TagString: Untagged
@@ -38,7 +39,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891816624006986976}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -80,6 +81,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &4144460777152448641
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891816624006986976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 9ad8f70f8b2343c4e918767f6d24786b, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &5040276198187498283
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7487225472972693249}
+  playerBall: {fileID: 1891816624006986976}
   moveSpeed: 40
 --- !u!114 &7487225472972693249
 MonoBehaviour:
@@ -486,11 +504,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inLight: 0
-  lightForce: 20
+  lightForce: 7
   playerLight: {fileID: 6734704575225079929}
   playerDark: {fileID: 6734704575302620666}
   playerGlow: {fileID: 1818189587494987447}
-  playerBall: {fileID: 2402686983205629434}
+  playerBall: {fileID: 1891816624006986976}
+  lightRay: {fileID: 5569466371570868734}
+  boxCollider: {fileID: 6734704576692815007}
 --- !u!114 &2183932541384457756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +524,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inLight: 0
-  glow: {fileID: 5040276198187498283}
 --- !u!1 &7239873035985270435
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +710,12 @@ PrefabInstance:
     - {fileID: 2094517849294956196, guid: 5d0bc85ac3e253b47968a10cafb4aeba, type: 3}
     - {fileID: 3120855535263285230, guid: 5d0bc85ac3e253b47968a10cafb4aeba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d0bc85ac3e253b47968a10cafb4aeba, type: 3}
+--- !u!1 &5569466371570868734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2094517849294956206, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
+    type: 3}
+  m_PrefabInstance: {fileID: 5790363354862700368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5569466371570868721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2094517849294956193, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
