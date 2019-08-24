@@ -5,11 +5,11 @@ using UnityEngine;
 public class SenseLogic : MonoBehaviour
 {
     public bool inLight;
-    SpriteRenderer glow;
+    public GameObject glow;
 
     private void Awake()
     {
-        glow = GetComponent<SpriteRenderer>();
+        glow.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
     private void Update()
@@ -22,7 +22,7 @@ public class SenseLogic : MonoBehaviour
         //Debug.Log("Entering " + collision.gameObject.tag);
         if (collision.gameObject.tag == "Light") {
             inLight = true;
-            glow.enabled = true;
+            glow.transform.localScale = new Vector3(3f, 3f, 1f);
         }
     }
 
@@ -31,7 +31,7 @@ public class SenseLogic : MonoBehaviour
         //Debug.Log("Leaving " + collision.gameObject.tag);
         if (collision.gameObject.tag == "Light") {
             inLight = false;
-            glow.enabled = false;
+            glow.transform.localScale = new Vector3(0f, 0f, 1f);
         }
     }
 }

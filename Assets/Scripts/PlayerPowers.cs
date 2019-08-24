@@ -10,6 +10,10 @@ public class PlayerPowers : MonoBehaviour
     LightController ray;
     Rigidbody2D rb;
     public float lightForce = 20f;
+    public SpriteRenderer playerLight;
+    public SpriteRenderer playerDark;
+    public SpriteRenderer playerGlow;
+    public SpriteRenderer playerBall;
 
     private void Awake()
     {
@@ -41,6 +45,23 @@ public class PlayerPowers : MonoBehaviour
         {
             ray.turnedOn = false;
         }
+
+    }
+
+    void ToggleBall()
+    {
+        if (playerBall.enabled)
+        {
+            playerBall.enabled = false;
+            playerLight.enabled = true;
+            playerDark.enabled = true;
+            playerGlow.enabled = true;
+            return;
+        }
+        playerBall.enabled = true;
+        playerLight.enabled = false;
+        playerDark.enabled = false;
+        playerGlow.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
