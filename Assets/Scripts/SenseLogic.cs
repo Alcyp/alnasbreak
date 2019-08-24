@@ -5,10 +5,11 @@ using UnityEngine;
 public class SenseLogic : MonoBehaviour
 {
     public bool inLight;
-    public GameObject glow;
+    GameObject glow;
 
     private void Awake()
     {
+        glow = GameObject.Find("Sense");
         glow.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
