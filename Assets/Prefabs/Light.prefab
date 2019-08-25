@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnedOn: 0
+  changeDirection: 0
   lightDistance: 23
   rotation: -30
   continuousRotation: 0
@@ -54,6 +55,9 @@ MonoBehaviour:
   swingSpeed: 1
   swingAngle: 2
   widenSpeed: 20
+  blink: 0
+  onTime: 1
+  offTime: 1
 --- !u!331 &2094517849294956194
 SpriteMask:
   m_ObjectHideFlags: 0

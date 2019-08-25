@@ -26,6 +26,13 @@ public class LightController : MonoBehaviour
     float swingDirection = 1f;
     float widenDirection = 1f;
 
+    public bool blink;
+    [Range(1f, 10f)]
+    public float onTime;
+    [Range(1f, 10f)]
+    public float offTime;
+    float blinkTimer = 0f;
+
     void OnValidate()
     {
         ren = GetComponent<SpriteRenderer>();
@@ -52,6 +59,7 @@ public class LightController : MonoBehaviour
         UpdateCone();
         Rotate();
         MoveLight();
+        Blink();
     }
 
     void UpdateCone()
@@ -94,6 +102,20 @@ public class LightController : MonoBehaviour
         if (angle > startingAngle) { widenDirection = -1f; }
         if (angle < startingAngle) { widenDirection = 1f; }
         if (Mathf.Abs(angle) > (startingAngle + 0.1f)) { widenDirection = 0f; }
+    }
+
+    void Blink()
+    {
+        if (!blink) { return; }
+        if (turnedOn)
+        {
+            if (blinkTimer >= onTime) { turnedOn = false; blinkTimer = 0f;  return; }
+        }
+        else
+        {
+            if (blinkTimer >= offTime) { turnedOn = true; blinkTimer = 0f; return; }
+        }
+        blinkTimer += Time.deltaTime;
     }
 
     public void turnOn()

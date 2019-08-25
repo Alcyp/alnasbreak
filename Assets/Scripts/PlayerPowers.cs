@@ -15,9 +15,9 @@ public class PlayerPowers : MonoBehaviour
     public SpriteRenderer playerGlow;
     public GameObject playerBall;
     public GameObject lightRay;
-    public BoxCollider2D boxCollider;
+    BoxCollider2D boxCollider;
     bool ballForm;
-    public CharacterController2D controller;
+    CharacterController2D controller;
 
     bool fly = false;
 
@@ -27,6 +27,7 @@ public class PlayerPowers : MonoBehaviour
         ray = GetComponentInChildren<LightController>();
         rb = GetComponent<Rigidbody2D>();
         controller = GetComponent<CharacterController2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()

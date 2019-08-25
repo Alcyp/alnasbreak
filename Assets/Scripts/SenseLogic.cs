@@ -5,12 +5,18 @@ using UnityEngine;
 public class SenseLogic : MonoBehaviour
 {
     public bool inLight;
+    public float rotationSpeed;
     GameObject glow;
 
     private void Awake()
     {
         glow = GameObject.Find("Sense");
         glow.transform.localScale = new Vector3(0f, 0f, 1f);
+    }
+
+    private void Update()
+    {
+        glow.transform.Rotate(new Vector3(0f, 0f, rotationSpeed * Time.deltaTime));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
