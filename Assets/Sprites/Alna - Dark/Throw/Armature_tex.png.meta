@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23b15cad4fc501745853439b12477e2f
+guid: 6f09d32e2c6a13643a77240970a423ee
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -8,9 +8,6 @@ TextureImporter:
   - first:
       213: 4076480308809909627
     second: Armature_tex_1
-  - first:
-      213: -6954911746008804769
-    second: Armature_tex_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -123,17 +120,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 146
-        width: 82
-        height: 109
+        y: 159
+        width: 88
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4ff5c9ead0ebbc42bb4391924d9b983
+      spriteID: 484fe8a5033fdc44cba30cd988b09767
       internalID: -8587740201145151533
       vertices: []
       indices: 
@@ -143,40 +140,19 @@ TextureImporter:
       name: Armature_tex_1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 146
-        width: 68
-        height: 109
+        x: 91
+        y: 159
+        width: 81
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17fa4293cd360c448894b4bf66bae844
+      spriteID: 5ff16eda000b8d84cbcfebac1017be86
       internalID: 4076480308809909627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Armature_tex_2
-      rect:
-        serializedVersion: 2
-        x: 155
-        y: 167
-        width: 73
-        height: 88
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61740b7a59ef0574db58bf7fac01c06c
-      internalID: -6954911746008804769
       vertices: []
       indices: 
       edges: []

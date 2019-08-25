@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
     public GameObject playerBall;
+    public Animator animatorLight;
+    public Animator animatorDark;
 
     public float moveSpeed = 10f;
     float velocity = 0f;
@@ -13,17 +15,29 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerBall.activeSelf) { velocity = 0f; return; }
         velocity = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        if (Input.GetButtonDown("Jump")) { jump = true; }
 
+        animatorLight.SetFloat("Speed", Mathf.Abs(velocity));
+        animatorDark.SetFloat("Speed", Mathf.Abs(velocity));
+
+        if (Input.GetButtonDown("Jump")) {
+            jump = true;
+            animatorLight.SetBool("isJumping", true);
+            animatorDark.SetBool("isJumping", true);
+        }
     }
     
     void FixedUpdate()
     {
+        if (playerBall.activeSelf) { jump = false; return; }
         controller.Move(velocity * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 
+    public void OnLanding()
+    {
+        animatorLight.SetBool("isJumping", false);
+        animatorDark.SetBool("isJumping", false);
+    }
     
 }

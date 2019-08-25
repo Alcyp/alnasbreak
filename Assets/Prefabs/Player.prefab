@@ -187,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6734704575225079928}
   - component: {fileID: 6734704575225079929}
+  - component: {fileID: 3955382570356630756}
   m_Layer: 0
   m_Name: PlayerLight
   m_TagString: Untagged
@@ -257,6 +258,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!95 &3955382570356630756
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734704575225079935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fee4379d145bb445ab5501494dfbece, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6734704575302620671
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6734704575302620667}
   - component: {fileID: 6734704575302620666}
+  - component: {fileID: 4289874119382337788}
   m_Layer: 0
   m_Name: PlayerDark
   m_TagString: Untagged
@@ -337,6 +358,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4289874119382337788
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734704575302620671}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1457d7fb8baf15f40aed41ebb9fceba5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6734704576692815006
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 7487225472972693249}
   playerBall: {fileID: 1891816624006986976}
+  animatorLight: {fileID: 3955382570356630756}
+  animatorDark: {fileID: 4289874119382337788}
   moveSpeed: 40
 --- !u!114 &7487225472972693249
 MonoBehaviour:
@@ -483,7 +525,18 @@ MonoBehaviour:
   m_CrouchDisableCollider: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6734704576692815002}
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnCrouchEvent:
@@ -504,13 +557,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inLight: 0
-  lightForce: 7
+  lightForce: 1000
   playerLight: {fileID: 6734704575225079929}
   playerDark: {fileID: 6734704575302620666}
   playerGlow: {fileID: 1818189587494987447}
   playerBall: {fileID: 1891816624006986976}
   lightRay: {fileID: 5569466371570868734}
   boxCollider: {fileID: 6734704576692815007}
+  controller: {fileID: 7487225472972693249}
 --- !u!114 &2183932541384457756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,15 +660,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2094517849294956206, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2094517849294956193, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 2094517849294956193, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28
+      value: 0.322
       objectReference: {fileID: 0}
     - target: {fileID: 2094517849294956193, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
         type: 3}

@@ -13,11 +13,6 @@ public class SenseLogic : MonoBehaviour
         glow.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    private void Update()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Entering " + collision.gameObject.tag);

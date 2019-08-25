@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23b15cad4fc501745853439b12477e2f
+guid: 81cf56bf82f63b6459bc38b55c87536f
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -122,18 +122,18 @@ TextureImporter:
       name: Armature_tex_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 146
-        width: 82
-        height: 109
+        x: 2
+        y: 159
+        width: 77
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4ff5c9ead0ebbc42bb4391924d9b983
+      spriteID: 550b3438c44a9ee4b885d0bc5662e043
       internalID: -8587740201145151533
       vertices: []
       indices: 
@@ -143,18 +143,18 @@ TextureImporter:
       name: Armature_tex_1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 146
-        width: 68
-        height: 109
+        x: 81
+        y: 159
+        width: 78
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17fa4293cd360c448894b4bf66bae844
+      spriteID: c1041534d329d0a48b609a6ce45cd08d
       internalID: 4076480308809909627
       vertices: []
       indices: 
@@ -164,18 +164,18 @@ TextureImporter:
       name: Armature_tex_2
       rect:
         serializedVersion: 2
-        x: 155
-        y: 167
+        x: 161
+        y: 157
         width: 73
-        height: 88
+        height: 98
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61740b7a59ef0574db58bf7fac01c06c
+      spriteID: 89fb7a0a239e7b64cbdd7fd4af2e37a8
       internalID: -6954911746008804769
       vertices: []
       indices: 

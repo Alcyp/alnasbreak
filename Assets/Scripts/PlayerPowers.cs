@@ -16,31 +16,37 @@ public class PlayerPowers : MonoBehaviour
     public GameObject playerBall;
     public GameObject lightRay;
     public BoxCollider2D boxCollider;
+    bool ballForm;
+    public CharacterController2D controller;
+
+    bool fly = false;
 
     private void Awake()
     {
         sense = GetComponentInChildren<SenseLogic>();
         ray = GetComponentInChildren<LightController>();
         rb = GetComponent<Rigidbody2D>();
+        controller = GetComponent<CharacterController2D>();
     }
 
     void Update()
     {
-        if (rb.velocity.sqrMagnitude < 0.1f && playerBall.activeSelf) { TurnIntoHuman(); }
-        if (playerBall.activeSelf) { return; }
-        inLight = sense.inLight;
-        RayLogic();
-        
+        if (ballForm)
+        {
+            inLight = false;
+        }
+        else
+        {
+            inLight = sense.inLight;
+            RayLogic();
+        }
     }
 
     void RayLogic()
     {
+        if (!inLight) { ray.turnedOn = false; return; } //in light?
 
-        if (!inLight) { ray.turnedOn = false; return; }
-
-        if (Input.GetAxis("Submit") == 0f) { ray.turnedOn = false; return; }
-        
-
+        if (Input.GetAxis("Submit") == 0f) { ray.turnedOn = false; return; } //casting?
 
         ray.turnedOn = true;
         ray.rotation = AngleTowardsMouse();
@@ -48,8 +54,16 @@ public class PlayerPowers : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             TurnIntoBall(); //Change shape into light
-            
+            fly = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (fly)
+        {
             rb.AddForce(VectorTowardsMouse() * lightForce);
+            fly = false;
         }
     }
 
@@ -61,7 +75,9 @@ public class PlayerPowers : MonoBehaviour
         playerGlow.enabled = false;
         lightRay.SetActive(false);
         boxCollider.enabled = false;
-        rb.gravityScale = 0.01f;
+        rb.gravityScale = 0f;
+        ballForm = true;
+        controller.m_AirControl = false;
     }
 
     void TurnIntoHuman()
@@ -73,11 +89,16 @@ public class PlayerPowers : MonoBehaviour
         lightRay.SetActive(true);
         boxCollider.enabled = true;
         rb.gravityScale = 3f;
+        ballForm = false;
+        controller.m_AirControl = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Wall")
+        {
+            TurnIntoHuman();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -108,6 +129,7 @@ public class PlayerPowers : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 direction = mousePos - objectPos;
+        direction.Normalize();
         return new Vector2(direction.x, direction.y);
     }
 }

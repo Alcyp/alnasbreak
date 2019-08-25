@@ -93,6 +93,7 @@ public class LightController : MonoBehaviour
         angle += widenSpeed * Time.deltaTime * widenDirection;
         if (angle > startingAngle) { widenDirection = -1f; }
         if (angle < startingAngle) { widenDirection = 1f; }
+        if (Mathf.Abs(angle) > (startingAngle + 0.1f)) { widenDirection = 0f; }
     }
 
     public void turnOn()
