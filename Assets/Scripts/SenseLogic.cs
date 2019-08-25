@@ -17,7 +17,7 @@ public class SenseLogic : MonoBehaviour
 
     private void Update()
     {
-        glow.transform.Rotate(new Vector3(0f, 0f, rotationSpeed * Time.deltaTime));
+        //glow.transform.Rotate(new Vector3(0f, 0f, rotationSpeed * Time.deltaTime));
         timer += Time.deltaTime;
         if (timer > 0.2f) {
             inLight = false;

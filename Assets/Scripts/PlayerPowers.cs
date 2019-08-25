@@ -12,7 +12,7 @@ public class PlayerPowers : MonoBehaviour
     public float lightForce = 20f;
     public SpriteRenderer playerLight;
     public SpriteRenderer playerDark;
-    public SpriteRenderer playerGlow;
+    public SpriteMask playerGlow;
     public GameObject playerBall;
     public GameObject lightRay;
     BoxCollider2D boxCollider;
