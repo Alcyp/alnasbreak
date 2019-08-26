@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3840930630947930551}
   - component: {fileID: 5897875669985560216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8277506039023729239}
   - component: {fileID: 5035158599890533871}
   - component: {fileID: 1733348518543695016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Middle Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}

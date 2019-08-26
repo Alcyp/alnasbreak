@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1833412912861809661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.17, y: -2.67, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1833412913637429974}
   - {fileID: 1833412914513699457}
@@ -120,7 +120,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1833412912861809661}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0e403092a266ea244a13652c85309def, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -181,10 +181,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.25, y: 0.42}
+    - - {x: -1.4224956, y: 1.0257854}
       - {x: 3, y: 1}
       - {x: 3, y: -1}
-      - {x: 0.25, y: -1}
+      - {x: -1.4224949, y: -0.96049225}
 --- !u!114 &1833412912861809649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1833412914513699457}
   m_CeilingCheck: {fileID: 1833412914223631425}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Grounded: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []

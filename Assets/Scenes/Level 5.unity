@@ -1083,16 +1083,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1833412912861809663, guid: 9fa4ac035664e6f4ba9ed755759eab90,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833412912861809663, guid: 9fa4ac035664e6f4ba9ed755759eab90,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa4ac035664e6f4ba9ed755759eab90, type: 3}
 --- !u!1001 &2094517847949572936
@@ -1419,21 +1409,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5569466371570868734, guid: fa2ff7f839318054abaa74af90a17a90,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5569466371570868721, guid: fa2ff7f839318054abaa74af90a17a90,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.17453736
-      objectReference: {fileID: 0}
-    - target: {fileID: 8868715051749095614, guid: fa2ff7f839318054abaa74af90a17a90,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8337744075846659275, guid: fa2ff7f839318054abaa74af90a17a90,
         type: 3}
       propertyPath: m_Radius
@@ -1444,10 +1419,25 @@ PrefabInstance:
       propertyPath: m_JumpForce
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 5569466371570868734, guid: fa2ff7f839318054abaa74af90a17a90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569466371570868721, guid: fa2ff7f839318054abaa74af90a17a90,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17453736
+      objectReference: {fileID: 0}
     - target: {fileID: 1818189587494987447, guid: fa2ff7f839318054abaa74af90a17a90,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868715051749095614, guid: fa2ff7f839318054abaa74af90a17a90,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8868715051749095614, guid: fa2ff7f839318054abaa74af90a17a90, type: 3}

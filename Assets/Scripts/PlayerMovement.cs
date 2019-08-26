@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump")) {
             jump = true;
+        }
+
+        if (controller.m_Grounded == false)
+        {
             animatorLight.SetBool("isJumping", true);
             animatorDark.SetBool("isJumping", true);
         }
@@ -39,5 +43,4 @@ public class PlayerMovement : MonoBehaviour
         animatorLight.SetBool("isJumping", false);
         animatorDark.SetBool("isJumping", false);
     }
-    
 }

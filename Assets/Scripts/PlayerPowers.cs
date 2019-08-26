@@ -18,7 +18,8 @@ public class PlayerPowers : MonoBehaviour
     BoxCollider2D boxCollider;
     bool ballForm;
     CharacterController2D controller;
-
+    float morphTimer = 0f;
+    Vector2 speedBeforeMirror;
     bool fly = false;
 
     private void Awake()
@@ -32,22 +33,28 @@ public class PlayerPowers : MonoBehaviour
 
     void Update()
     {
-        if (ballForm)
-        {
-            inLight = false;
-        }
+        if (ballForm) { inLight = false; }
         else
         {
             inLight = sense.inLight;
             RayLogic();
         }
+        RotateLightBall();
+    }
+
+    void RotateLightBall()
+    {
+        Vector3 temp = playerBall.transform.eulerAngles;
+        Vector2 normal = rb.velocity.normalized;
+        temp.z = Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg - 90f;
+        playerBall.transform.eulerAngles = temp;
     }
 
     void RayLogic()
     {
         if (!inLight) { ray.turnedOn = false; return; } //in light?
 
-        if (Input.GetAxis("Submit") == 0f) { ray.turnedOn = false; return; } //casting?
+        if (Input.GetAxis("Submit") == 0f && !Input.GetMouseButton(1)) { ray.turnedOn = false; return; } //casting?
 
         ray.turnedOn = true;
         ray.rotation = AngleTowardsMouse();
@@ -63,6 +70,8 @@ public class PlayerPowers : MonoBehaviour
     {
         if (fly)
         {
+            morphTimer -= Time.deltaTime;
+            if (morphTimer > 0f) { return; }
             rb.AddForce(VectorTowardsMouse() * lightForce);
             fly = false;
         }
@@ -77,12 +86,22 @@ public class PlayerPowers : MonoBehaviour
         lightRay.SetActive(false);
         boxCollider.enabled = false;
         rb.gravityScale = 0f;
+        rb.velocity = Vector2.zero;
         ballForm = true;
         controller.m_AirControl = false;
+        morphTimer = 0.2666f;
     }
 
     void TurnIntoHuman()
     {
+        StartCoroutine(ActivateAnimator());
+    }
+
+    IEnumerator ActivateAnimator()
+    {
+        playerBall.GetComponent<Animator>().SetTrigger("End");
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.2666f);
         playerBall.SetActive(false);
         playerLight.enabled = true;
         playerDark.enabled = true;
@@ -98,10 +117,10 @@ public class PlayerPowers : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
-            TurnIntoHuman();
+            if (ballForm) { TurnIntoHuman(); }
         }
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Finish")
