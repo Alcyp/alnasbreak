@@ -58,6 +58,7 @@ public class ZoeyBrain : MonoBehaviour
             }
             else
             {
+
                 Debug.Log("Player hit!");
             }
         }
