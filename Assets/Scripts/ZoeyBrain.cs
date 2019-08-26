@@ -12,6 +12,7 @@ public class ZoeyBrain : MonoBehaviour
     public bool attack = false;
     int health = 10;
     public GameObject healthBar;
+    public bool attacking;
 
     void Start()
     {
@@ -47,11 +48,18 @@ public class ZoeyBrain : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "LightBall")
         {
-            if (attack) { return; }
-            moveTimer = 1f;
-            attack = true;
-            float direction = collision.gameObject.transform.position.x - gameObject.transform.position.x;
-            velocity = Mathf.Sign(direction) * 5f;
+            if (!attacking)
+            {
+                if (attack) { return; }
+                moveTimer = 1f;
+                attack = true;
+                float direction = collision.gameObject.transform.position.x - gameObject.transform.position.x;
+                velocity = Mathf.Sign(direction) * 5f;
+            }
+            else
+            {
+                Debug.Log("Player hit!");
+            }
         }
     }
 
