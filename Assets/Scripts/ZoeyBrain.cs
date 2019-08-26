@@ -54,7 +54,7 @@ public class ZoeyBrain : MonoBehaviour
             if (!attacking)
             {
                 if (attack) { return; }
-                moveTimer = 1f;
+                moveTimer = 1.5f;
                 attack = true;
                 velocity = Mathf.Sign(direction) * 5f;
             }
