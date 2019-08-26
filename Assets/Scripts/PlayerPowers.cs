@@ -80,6 +80,7 @@ public class PlayerPowers : MonoBehaviour
     void TurnIntoBall()
     {
         playerBall.SetActive(true);
+        gameObject.tag = "LightBall";
         playerLight.enabled = false;
         playerDark.enabled = false;
         playerGlow.enabled = false;
@@ -103,6 +104,7 @@ public class PlayerPowers : MonoBehaviour
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(0.2666f);
         playerBall.SetActive(false);
+        gameObject.tag = "Player";
         playerLight.enabled = true;
         playerDark.enabled = true;
         playerGlow.enabled = true;
