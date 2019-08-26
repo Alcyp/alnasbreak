@@ -127,7 +127,7 @@ public class PlayerPowers : MonoBehaviour
     {
         if (collision.gameObject.tag == "Finish")
         {
-            Debug.Log("Next stage!");
+            //Debug.Log("Next stage!");
             StartCoroutine(ChangeLevel());
 
         }

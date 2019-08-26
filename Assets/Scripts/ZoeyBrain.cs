@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZoeyBrain : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ZoeyBrain : MonoBehaviour
     int health = 10;
     public GameObject healthBar;
     public bool attacking;
+    bool playerHit = false;
 
     void Start()
     {
@@ -48,20 +50,32 @@ public class ZoeyBrain : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "LightBall")
         {
+            float direction = collision.gameObject.transform.position.x - gameObject.transform.position.x;
             if (!attacking)
             {
                 if (attack) { return; }
                 moveTimer = 1f;
                 attack = true;
-                float direction = collision.gameObject.transform.position.x - gameObject.transform.position.x;
                 velocity = Mathf.Sign(direction) * 5f;
             }
             else
             {
-
-                Debug.Log("Player hit!");
+                if (playerHit) { return; } playerHit = true;
+                collision.gameObject.GetComponent<PlayerMovement>().animatorLight.SetBool("Dead", true);
+                collision.gameObject.GetComponent<PlayerMovement>().animatorDark.SetBool("Dead", true);
+                collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
+                Vector2 knockback = new Vector2(Mathf.Sign(direction) * 400f, 400f);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockback);
+                StartCoroutine(RestartLevel());
             }
         }
+    }
+
+    IEnumerator RestartLevel()
+    {
+        float fadeTime = GameObject.Find("Main Camera").GetComponent<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
