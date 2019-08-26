@@ -64,7 +64,7 @@ public class ZoeyBrain : MonoBehaviour
             healthBar.transform.localScale = new Vector3(0.2f * health, 0.2f, 1f);
             if (health == 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
         
