@@ -11,7 +11,7 @@ public class ZoeyBrain : MonoBehaviour
     float velocity = 0f;
     float moveTimer = 0f;
     public bool attack = false;
-    int health = 10;
+    int health = 5;
     public GameObject healthBar;
     public bool attacking;
     bool playerHit = false;
@@ -82,9 +82,9 @@ public class ZoeyBrain : MonoBehaviour
     {
         if (collision.gameObject.tag == "LightBall")
         {
-            if (health == 10) { healthBar.SetActive(true); }
+            if (health == 5) { healthBar.SetActive(true); }
             health--;
-            healthBar.transform.localScale = new Vector3(0.2f * health, 0.2f, 1f);
+            healthBar.transform.localScale = new Vector3(0.4f * health, 0.2f, 1f);
             if (health == 0)
             {
                 gameObject.SetActive(false);
