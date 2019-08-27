@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator animatorLight;
     public Animator animatorDark;
 
+    public AudioSource alnaSteps;
+    
     public float moveSpeed = 10f;
     float velocity = 0f;
     bool jump = false;
@@ -29,6 +31,14 @@ public class PlayerMovement : MonoBehaviour
             animatorLight.SetBool("isJumping", true);
             animatorDark.SetBool("isJumping", true);
         }
+        else
+        {
+            if (velocity != 0f) { if (!alnaSteps.isPlaying) { alnaSteps.Play(); } }
+        }
+        
+        
+
+
     }
     
     void FixedUpdate()

@@ -16,6 +16,13 @@ public class ZoeyBrain : MonoBehaviour
     public bool attacking;
     bool playerHit = false;
 
+    public AudioSource swing;
+    public AudioSource step;
+    public AudioSource lightHit;
+    public AudioSource axeHit;
+
+    bool dead;
+
     void Start()
     {
         controller = GetComponent<CharacterController2D>();
@@ -24,8 +31,17 @@ public class ZoeyBrain : MonoBehaviour
 
     void Update()
     {
+        if (dead)
+        {
+            velocity = 0f;
+            animatorLight.SetFloat("Speed", Mathf.Abs(velocity));
+            animatorDark.SetFloat("Speed", Mathf.Abs(velocity));
+            if (!lightHit.isPlaying) { gameObject.SetActive(false); }
+            return;
+        }
         if (moveTimer > 0f) {
             moveTimer -= Time.deltaTime;
+            if (!step.isPlaying) { step.Play(); }
         }
         else
         {
@@ -33,6 +49,7 @@ public class ZoeyBrain : MonoBehaviour
             if (attack)
             {
                 attack = false;
+                swing.Play();
                 animatorLight.SetTrigger("Attack");
                 animatorDark.SetTrigger("Attack");
             }
@@ -61,9 +78,11 @@ public class ZoeyBrain : MonoBehaviour
             else
             {
                 if (playerHit) { return; } playerHit = true;
+                axeHit.Play();
                 collision.gameObject.GetComponent<PlayerMovement>().animatorLight.SetBool("Dead", true);
                 collision.gameObject.GetComponent<PlayerMovement>().animatorDark.SetBool("Dead", true);
                 collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
+                collision.gameObject.GetComponent<PlayerPowers>().TurnIntoHuman();
                 Vector2 knockback = new Vector2(Mathf.Sign(direction) * 400f, 400f);
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockback);
                 StartCoroutine(RestartLevel());
@@ -82,12 +101,13 @@ public class ZoeyBrain : MonoBehaviour
     {
         if (collision.gameObject.tag == "LightBall")
         {
+            lightHit.Play();
             if (health == 5) { healthBar.SetActive(true); }
             health--;
             healthBar.transform.localScale = new Vector3(0.4f * health, 0.2f, 1f);
             if (health == 0)
             {
-                gameObject.SetActive(false);
+                dead = true;
             }
         }
         

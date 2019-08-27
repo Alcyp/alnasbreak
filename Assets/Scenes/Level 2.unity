@@ -443,7 +443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOutTexture: {fileID: 2800000, guid: 03c48f75e7f8a7d40813afa85ec9749b, type: 3}
-  fadeSpeed: 0.8
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1188,6 +1187,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2094517849294956206, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
+        type: 3}
+      propertyPath: m_Name
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 2094517849294956193, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1252,11 +1256,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 23.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2094517849294956206, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
-        type: 3}
-      propertyPath: m_Name
-      value: Light
       objectReference: {fileID: 0}
     - target: {fileID: 2094517849294956207, guid: 5d0bc85ac3e253b47968a10cafb4aeba,
         type: 3}

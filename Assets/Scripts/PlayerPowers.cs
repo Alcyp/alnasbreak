@@ -21,6 +21,11 @@ public class PlayerPowers : MonoBehaviour
     float morphTimer = 0f;
     Vector2 speedBeforeMirror;
     bool fly = false;
+    bool changingLevel = false;
+
+    public AudioSource alnaTransformIn;
+    public AudioSource alnaTransformOut;
+    public AudioSource alnaBounce;
 
     private void Awake()
     {
@@ -79,6 +84,7 @@ public class PlayerPowers : MonoBehaviour
 
     void TurnIntoBall()
     {
+        alnaTransformIn.Play();
         playerBall.SetActive(true);
         gameObject.tag = "LightBall";
         playerLight.enabled = false;
@@ -93,13 +99,14 @@ public class PlayerPowers : MonoBehaviour
         morphTimer = 0.2666f;
     }
 
-    void TurnIntoHuman()
+    public void TurnIntoHuman()
     {
         StartCoroutine(ActivateAnimator());
     }
 
     IEnumerator ActivateAnimator()
     {
+        alnaTransformOut.Play();
         playerBall.GetComponent<Animator>().SetTrigger("End");
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(0.2666f);
@@ -121,14 +128,20 @@ public class PlayerPowers : MonoBehaviour
         {
             if (ballForm) { TurnIntoHuman(); }
         }
+        if (collision.gameObject.tag == "Mirror")
+        {
+            alnaBounce.Play();
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Finish")
         {
+            if (changingLevel) { return; } changingLevel = true;
             //Debug.Log("Next stage!");
             StartCoroutine(ChangeLevel());
+            GameObject.Find("EndOfLevel").GetComponent<AudioSource>().Play();
 
         }
     }

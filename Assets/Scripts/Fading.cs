@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Fading : MonoBehaviour {
 
 	public Texture2D fadeOutTexture;	// the texture that will overlay the screen. This can be a black image or a loading graphic
-	public float fadeSpeed = 0.8f;		// the fading speed
+	float fadeSpeed = 1f;		// the fading speed
 
 	private int drawDepth = -1000;		// the texture's order in the draw hierarchy: a low number means it renders on top
 	private float alpha = 1.0f;			// the texture's alpha value between 0 and 1
@@ -33,7 +33,7 @@ public class Fading : MonoBehaviour {
 	public float BeginFade (int direction)
 	{
 		fadeDir = direction;
-		return (fadeSpeed);
+        return (fadeSpeed);
         
 	}
 
